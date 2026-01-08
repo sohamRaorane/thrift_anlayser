@@ -1,0 +1,211 @@
+/* Seller Dashboard */
+
+.seller-dashboard {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.dashboard-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-4);
+    border-bottom: var(--border);
+}
+
+.dashboard-header h1 {
+    margin: 0;
+    font-size: 24px;
+    font-family: 'IBM Plex Serif', serif;
+}
+
+.logout-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    background: transparent;
+    color: var(--text-secondary);
+    border: var(--border);
+    padding: var(--space-2) var(--space-4);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: var(--radius-sm);
+}
+
+.logout-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--text-primary);
+    transform: none;
+    box-shadow: none;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    gap: var(--space-6);
+    align-items: start;
+}
+
+/* Sidebar */
+.dashboard-sidebar {
+    border: var(--border-thick);
+    background: var(--bg-panel);
+    border-radius: var(--radius-sm);
+    padding: var(--space-4);
+    position: sticky;
+    top: 80px;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.nav-item:hover {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    transform: none;
+    box-shadow: none;
+}
+
+.nav-item.active {
+    background: var(--text-primary);
+    color: var(--bg-panel);
+}
+
+/* Main Content */
+.dashboard-main {
+    border: var(--border-thick);
+    background: var(--bg-panel);
+    border-radius: var(--radius-sm);
+    padding: var(--space-6);
+}
+
+.verification-panel h2 {
+    margin: 0 0 var(--space-6) 0;
+    font-size: 20px;
+    font-family: 'IBM Plex Serif', serif;
+    font-weight: 600;
+}
+
+.verification-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
+}
+
+.verification-item {
+    border: var(--border);
+    padding: var(--space-4);
+    border-radius: var(--radius-sm);
+    background: var(--bg-secondary);
+}
+
+.item-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-2);
+}
+
+.item-label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-tertiary);
+}
+
+.status-badge {
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-sm);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.status-badge.verified {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.status-badge.pending {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
+.status-badge.neutral {
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    border: var(--border);
+}
+
+.item-detail {
+    margin: 0;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.overview-section {
+    border-top: var(--border);
+    padding-top: var(--space-6);
+}
+
+.overview-section h3 {
+    margin: 0 0 var(--space-3) 0;
+    font-size: 16px;
+    font-family: 'IBM Plex Serif', serif;
+    font-weight: 600;
+}
+
+.overview-section p {
+    margin: 0 0 var(--space-2) 0;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.overview-section .muted {
+    color: var(--text-tertiary);
+    font-size: 13px;
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-sidebar {
+        position: relative;
+        top: 0;
+    }
+
+    .verification-grid {
+        grid-template-columns: 1fr;
+    }
+}

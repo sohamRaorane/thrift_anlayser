@@ -1,0 +1,174 @@
+/* Auth Modal */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: grid;
+    place-items: center;
+    z-index: 1000;
+    padding: var(--space-4);
+}
+
+.modal-content {
+    background: var(--bg-panel);
+    border: var(--border-thick);
+    border-radius: var(--radius-sm);
+    padding: var(--space-8);
+    max-width: 450px;
+    width: 100%;
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-4);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    padding: var(--space-2);
+    transition: color 0.2s ease;
+    border-radius: var(--radius-sm);
+}
+
+.modal-close:hover {
+    color: var(--text-primary);
+    background: var(--bg-secondary);
+    transform: none;
+    box-shadow: none;
+}
+
+.modal-title {
+    margin: 0 0 var(--space-6) 0;
+    font-size: 24px;
+    font-family: 'IBM Plex Serif', serif;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.modal-tabs {
+    display: flex;
+    gap: var(--space-2);
+    margin-bottom: var(--space-6);
+    border-bottom: var(--border);
+}
+
+.tab {
+    flex: 1;
+    padding: var(--space-3) var(--space-4);
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 14px;
+    border-radius: 0;
+}
+
+.tab:hover {
+    color: var(--text-primary);
+    transform: none;
+    box-shadow: none;
+}
+
+.tab.active {
+    color: var(--text-primary);
+    border-bottom-color: var(--text-primary);
+    font-weight: 600;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.form-group label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-tertiary);
+}
+
+.form-group input {
+    padding: var(--space-3) var(--space-4);
+    border: var(--border-thick);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    background: var(--bg-panel);
+    color: var(--text-primary);
+    transition: border-color 0.2s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.auth-submit-btn {
+    background: white;
+    color: black;
+    border: 1px solid black;
+    padding: 1em 2em;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'IBM Plex Sans', sans-serif;
+    letter-spacing: 0.01em;
+    transition: all 0.3s ease-in-out;
+    font-size: 17px;
+    border-radius: 10em;
+    box-shadow: 0 0 0 0 black;
+    margin-top: var(--space-4);
+}
+
+.auth-submit-btn:hover {
+    transform: translateY(-4px) translateX(-2px);
+    box-shadow: 2px 5px 0 0 black;
+}
+
+.auth-submit-btn:active {
+    transform: translateY(2px) translateX(1px);
+    box-shadow: 0 0 0 0 black;
+}
+
+.auth-submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.signup-content {
+    text-align: center;
+    padding: var(--space-6) 0;
+}
+
+.signup-content p {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-6);
+    line-height: 1.6;
+}
+
+.error-message {
+    padding: var(--space-3) var(--space-4);
+    background: #fee;
+    border: 1px solid #fcc;
+    border-radius: var(--radius-sm);
+    color: #c33;
+    font-size: 14px;
+}

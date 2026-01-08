@@ -1,0 +1,272 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Editorial Institutional Palette */
+  --bg-primary: #fafaf9;
+  --bg-secondary: #f5f5f4;
+  --bg-panel: #ffffff;
+
+  /* Text hierarchy */
+  --text-primary: #1a1a1a;
+  --text-secondary: #525252;
+  --text-tertiary: #737373;
+  --text-muted: #a3a3a3;
+
+  /* Single muted accent - institutional blue-gray */
+  --accent: #64748b;
+  --accent-light: #94a3b8;
+  --accent-bg: #f1f5f9;
+
+  /* Borders - minimal and structured */
+  --border-color: #d4d4d4;
+  --border-strong: #a3a3a3;
+  --border-subtle: 1px solid #e5e5e5;
+  --border: 1px solid #d4d4d4;
+  --border-thick: 2px solid #a3a3a3;
+
+  /* No shadows - use borders only */
+
+  /* Minimal radius */
+  --radius-none: 0;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+
+  /* Structured spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.app-shell {
+  position: relative;
+  z-index: 1;
+}
+
+/* Editorial Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'IBM Plex Serif', Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin: 0;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Body text */
+p {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* Labels - uppercase, small, structured */
+.label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-tertiary);
+}
+
+/* Values - clear hierarchy */
+.value {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.value-large {
+  font-size: 28px;
+  font-weight: 600;
+  font-family: 'IBM Plex Serif', serif;
+  color: var(--text-primary);
+}
+
+/* Links - minimal */
+a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+/* Buttons - modern with animation */
+button {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  font-size: 17px;
+  letter-spacing: 0.01em;
+  background: white;
+  color: black;
+  border: 1px solid black;
+  padding: 1em 2em;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border-radius: 10em;
+  box-shadow: 0 0 0 0 black;
+}
+
+button:hover {
+  transform: translateY(-4px) translateX(-2px);
+  box-shadow: 2px 5px 0 0 black;
+}
+
+button:active {
+  transform: translateY(2px) translateX(1px);
+  box-shadow: 0 0 0 0 black;
+}
+
+button.secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid black;
+}
+
+button.secondary:hover {
+  background: var(--bg-secondary);
+  transform: translateY(-4px) translateX(-2px);
+  box-shadow: 2px 5px 0 0 black;
+}
+
+/* Dividers */
+hr {
+  border: none;
+  border-top: var(--border);
+  margin: var(--space-6) 0;
+}
+
+/* Utility classes */
+.text-muted {
+  color: var(--text-muted);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+/* Verification badge - official */
+.badge-verified {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: var(--accent-bg);
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border: 1px solid var(--accent-light);
+  border-radius: var(--radius-sm);
+}
+
+/* Metric display - structured */
+.metric-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: var(--space-4);
+  padding: var(--space-3) 0;
+  border-bottom: var(--border);
+}
+
+.metric-row:last-child {
+  border-bottom: none;
+}
+
+.metric-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.metric-value {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* Tables - structured data */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-tertiary);
+  padding: var(--space-3);
+  border-bottom: var(--border-thick);
+}
+
+td {
+  padding: var(--space-3);
+  border-bottom: var(--border);
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+/* Rating display - minimal */
+.rating {
+  font-size: 20px;
+  font-weight: 600;
+  font-family: 'IBM Plex Serif', serif;
+  color: var(--text-primary);
+}
+
+.rating-label {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  margin-left: 6px;
+}

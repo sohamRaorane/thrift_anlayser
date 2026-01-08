@@ -1,0 +1,419 @@
+/* VendorProfile - Modern Classy Design */
+
+.vendor-profile {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Vendor Hero Section */
+.vendor-hero {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+    padding-bottom: 2.5rem;
+    border-bottom: var(var(--border-thick));
+}
+
+.vendor-identity {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 2rem;
+}
+
+.vendor-hero-image {
+    width: 200px;
+    height: 200px;
+    background: var(--parchment-dark);
+    border: var(var(--border-thick));
+    background-size: cover;
+    background-position: center;
+}
+
+.vendor-identity-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.vendor-title-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.vendor-title-row h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin: 0;
+    letter-spacing: 0.02em;
+}
+
+.badge-verified {
+    background: var(--accent-subtle);
+    color: var(--accent-gold);
+    padding: 0.35rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    border: 1px solid var(--accent-gold);
+    text-transform: uppercase;
+}
+
+.vendor-instagram {
+    color: var(--ink-muted);
+    font-size: 1rem;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.vendor-instagram:hover {
+    color: var(--ink-black);
+}
+
+.vendor-description {
+    color: var(--ink-muted);
+    line-height: 1.7;
+    margin-top: 0.5rem;
+    font-size: 1rem;
+}
+
+.vendor-metrics {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: var(--border-subtle);
+}
+
+.score-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--parchment-dark);
+    padding: 0.5rem 1.25rem;
+    border: var(--border-subtle);
+    font-weight: 600;
+    color: var(--ink-black);
+}
+
+.score-value {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+}
+
+.muted {
+    color: var(--ink-muted);
+    font-size: 0.95rem;
+}
+
+.primary-btn {
+    background: var(--ink-black);
+    color: var(--parchment);
+    border: none;
+    padding: 0.85rem 2rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 0.05em;
+}
+
+.primary-btn:hover {
+    background: var(--ink-brown);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+/* DripScore Card - Modern numerical design */
+.drip-card {
+    background: var(--parchment-light);
+    border: var(var(--border-thick));
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.drip-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: var(--border-subtle);
+}
+
+.drip-label {
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+}
+
+.drip-value {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--ink-black);
+    font-family: 'Playfair Display', serif;
+    line-height: 1;
+}
+
+.drip-meter {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.drip-meter-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.drip-meter-label {
+    font-size: 0.9rem;
+    color: var(--ink-black);
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.drip-meter-bar {
+    height: 8px;
+    background: var(--parchment-dark);
+    border: var(--border-subtle);
+    position: relative;
+    overflow: hidden;
+}
+
+.drip-meter-bar span {
+    display: block;
+    height: 100%;
+    background: var(--ink-black);
+    transition: width 0.6s ease;
+}
+
+.drip-meter-value {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--ink-black);
+}
+
+/* Vendor Sections */
+.vendor-sections {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.vendor-panel {
+    background: var(--parchment-light);
+    border: var(var(--border-thick));
+    padding: 2rem;
+}
+
+.panel-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: var(--border-subtle);
+}
+
+.panel-head h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+}
+
+.pill {
+    padding: 0.35rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    border: var(--border-subtle);
+    text-transform: uppercase;
+}
+
+.pill.success {
+    background: var(--accent-subtle);
+    color: var(--accent-gold);
+    border-color: var(--accent-gold);
+}
+
+.pill.neutral {
+    background: var(--parchment-dark);
+    color: var(--ink-muted);
+}
+
+.panel-text {
+    color: var(--ink-black);
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+}
+
+.panel-subtext {
+    color: var(--ink-muted);
+    font-size: 0.9rem;
+}
+
+.panel-note {
+    background: var(--parchment-dark);
+    padding: 1rem;
+    margin-top: 1.5rem;
+    border-left: 3px solid var(--accent-gold);
+    color: var(--ink-muted);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* Transparency Grid */
+.transparency-grid {
+    display: grid;
+    gap: 1.25rem;
+}
+
+.transparency-grid>div {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 1rem;
+}
+
+.transparency-grid dt {
+    font-weight: 600;
+    color: var(--ink-black);
+    font-size: 0.9rem;
+}
+
+.transparency-grid dd {
+    color: var(--ink-muted);
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Review Panel */
+.review-panel {
+    grid-column: 1 / -1;
+    margin-top: 1rem;
+}
+
+.review-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.review-card {
+    background: var(--parchment);
+    border: var(--border-subtle);
+    padding: 1.75rem;
+    transition: all 0.3s ease;
+}
+
+.review-card:hover {
+    border-color: var(--ink-black);
+    box-shadow: var(--shadow-soft);
+}
+
+/* Submit Review Button */
+.submit-review-btn {
+    background: white;
+    color: black;
+    border: 1px solid black;
+    padding: 1em 2em;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: 'IBM Plex Sans', sans-serif;
+    letter-spacing: 0.01em;
+    transition: all 0.3s ease-in-out;
+    font-size: 17px;
+    border-radius: 10em;
+    box-shadow: 0 0 0 0 black;
+}
+
+.submit-review-btn:hover {
+    transform: translateY(-4px) translateX(-2px);
+    box-shadow: 2px 5px 0 0 black;
+}
+
+.submit-review-btn:active {
+    transform: translateY(2px) translateX(1px);
+    box-shadow: 0 0 0 0 black;
+}
+
+.review-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.review-card h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    font-family: 'Playfair Display', serif;
+}
+
+.review-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--ink-muted);
+    font-size: 0.9rem;
+}
+
+.review-score {
+    font-weight: 700;
+    color: var(--ink-black);
+    font-size: 1.1rem;
+}
+
+.tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.pill.small {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.7rem;
+}
+
+.review-body {
+    color: var(--ink-muted);
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .vendor-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .vendor-sections {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .vendor-identity {
+        grid-template-columns: 1fr;
+    }
+
+    .vendor-hero-image {
+        width: 100%;
+        height: 250px;
+    }
+}

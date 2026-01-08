@@ -1,0 +1,119 @@
+/* EntryPage - Editorial Institutional */
+
+.entry-hero {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: var(--space-12) var(--space-6);
+}
+
+/* Official verification mark */
+.hero-badge {
+    width: 60px;
+    height: 60px;
+    border: 2px solid var(--text-primary);
+    display: grid;
+    place-items: center;
+    font-size: 28px;
+    font-weight: 700;
+    background: var(--bg-panel);
+    margin: 0 auto var(--space-6);
+    color: var(--text-primary);
+    border-radius: var(--radius-sm);
+}
+
+/* Structured headline */
+.hero-title {
+    font-size: 48px;
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-3) 0;
+    font-family: 'IBM Plex Serif', serif;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.1;
+    color: var(--text-primary);
+}
+
+/* Institutional subtitle */
+.hero-subtitle {
+    margin: 0 auto var(--space-8);
+    color: var(--text-secondary);
+    font-size: 16px;
+    max-width: 600px;
+    text-align: center;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+/* Minimal divider */
+.divider {
+    width: 40px;
+    height: 2px;
+    background: var(--accent);
+    margin: var(--space-8) auto;
+}
+
+/* Action cards - rectangular, grounded */
+.action-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+}
+
+.action-card {
+    background: var(--bg-panel);
+    border: var(--border);
+    padding: var(--space-6);
+    transition: border-color 0.2s ease;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+}
+
+.action-card:hover {
+    border-color: var(--text-primary);
+}
+
+.action-card h3 {
+    margin: var(--space-4) 0 var(--space-2) 0;
+    font-size: 16px;
+    font-family: 'IBM Plex Serif', serif;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.action-card p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Icon - minimal, functional */
+.action-icon {
+    width: 48px;
+    height: 48px;
+    border: var(--border);
+    display: grid;
+    place-items: center;
+    font-size: 24px;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border-radius: var(--radius-sm);
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .action-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 36px;
+    }
+
+    .entry-hero {
+        padding: var(--space-8) var(--space-4);
+    }
+}

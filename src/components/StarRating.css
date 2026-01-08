@@ -1,0 +1,44 @@
+/* StarRating - Minimal, Institutional */
+
+.star-rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    color: var(--text-primary);
+    font-size: 16px;
+    letter-spacing: 0.02em;
+}
+
+.star {
+    display: inline-block;
+    position: relative;
+}
+
+.star-full,
+.star-empty {
+    color: var(--text-primary);
+}
+
+.star-empty {
+    opacity: 0.2;
+}
+
+/* Partial star */
+.star-partial {
+    position: relative;
+    display: inline-block;
+}
+
+.star-bg {
+    color: var(--text-primary);
+    opacity: 0.2;
+}
+
+.star-fill {
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    width: var(--fill-percentage);
+    color: var(--text-primary);
+}
