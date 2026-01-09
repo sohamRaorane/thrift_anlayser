@@ -1,0 +1,338 @@
+/* Component styles for PromoteStore */
+
+/* --- Unverified / Locked State --- */
+.promote-shell {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Center vertically */
+    min-height: 60vh;
+    /* Ensure valid height */
+}
+
+.promote-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-6);
+    text-align: center;
+    max-width: 400px;
+}
+
+.promote-icon {
+    color: var(--text-tertiary);
+    margin-bottom: var(--space-2);
+}
+
+.promote-message {
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 24px;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.promote-subtext {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.promote-btn {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 16px;
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-strong);
+    padding: 0.8em 2em;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s;
+    margin-top: var(--space-2);
+}
+
+.promote-btn:hover {
+    border-color: var(--text-primary);
+    background: var(--bg-secondary);
+}
+
+.promote-redirect-hint {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-top: -10px;
+}
+
+/* --- Verified Dashboard State --- */
+.promote-dashboard {
+    width: 100%;
+    height: 100%;
+    padding-top: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+}
+
+.dashboard-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.create-campaign-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--text-primary);
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+}
+
+.metric-card {
+    background: var(--bg-panel);
+    border: var(--border);
+    padding: var(--space-5);
+    border-radius: var(--radius-sm);
+}
+
+.metric-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.metric-value {
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: var(--space-2) 0;
+}
+
+.metric-delta {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.metric-delta.positive {
+    color: #15803d;
+}
+
+.metric-delta.neutral {
+    color: var(--text-tertiary);
+}
+
+/* --- Campaign List --- */
+.campaigns-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.section-title {
+    font-size: 18px;
+    font-family: 'IBM Plex Serif', serif;
+    font-weight: 600;
+}
+
+.campaign-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.campaign-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-panel);
+    border: var(--border-subtle);
+    padding: var(--space-4);
+    border-radius: var(--radius-sm);
+}
+
+.campaign-info {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.campaign-name {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.campaign-status {
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.campaign-status.active {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.campaign-status.paused {
+    background: #f1f5f9;
+    color: #64748b;
+}
+
+/* --- Modal Styles --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: var(--bg-panel);
+    border-radius: var(--radius-sm);
+    padding: var(--space-6);
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-6);
+}
+
+.modal-header h3 {
+    font-size: 20px;
+    font-family: 'IBM Plex Serif', serif;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-tertiary);
+}
+
+.close-btn:hover {
+    color: var(--text-primary);
+}
+
+/* Form Styles */
+.campaign-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.form-group input,
+.form-group select {
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-size: 14px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    outline: none;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--text-primary);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+}
+
+.goal-options {
+    display: flex;
+    gap: var(--space-2);
+}
+
+.goal-btn {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    background: white;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s;
+}
+
+.goal-btn.selected {
+    background: var(--text-primary);
+    color: white;
+    border-color: var(--text-primary);
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-3);
+    margin-top: var(--space-4);
+}
+
+.cancel-btn {
+    padding: 8px 16px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.launch-btn {
+    padding: 10px 20px;
+    background: var(--text-primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.launch-btn:hover {
+    opacity: 0.9;
+}

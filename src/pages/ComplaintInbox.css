@@ -1,0 +1,241 @@
+/* Component styles for ComplaintInbox */
+.inbox-shell {
+    max-width: none;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centering the card */
+    padding-top: var(--space-8);
+    min-height: 100%;
+    width: 100%;
+}
+
+.complaint-card {
+    background: var(--bg-panel);
+    border: var(--border);
+    padding: var(--space-8);
+    border-radius: var(--radius-sm);
+    width: 100%;
+    max-width: 600px;
+    /* Limit width for readability */
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    transition: all 0.3s ease;
+}
+
+.complaint-card.resolved-card {
+    border-color: #bbf7d0;
+    /* Green tint border */
+    background: #fdfdfd;
+}
+
+.card-header-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: var(--space-2);
+}
+
+.complaint-title {
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: center;
+}
+
+.resolved-badge {
+    background: #15803d;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 100px;
+    letter-spacing: 0.05em;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.complaint-details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    border-bottom: var(--border-subtle);
+    padding-bottom: var(--space-6);
+    max-width: 400px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.detail-row {
+    font-size: 16px;
+    color: var(--text-secondary);
+    font-weight: 400;
+    display: flex;
+    justify-content: space-between;
+}
+
+.detail-row .label {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.complaint-actions {
+    margin-top: var(--space-2);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.action-button.primary {
+    width: 100%;
+    max-width: 400px;
+    /* Match details width */
+    font-family: 'IBM Plex Sans', sans-serif;
+    padding: 14px;
+    font-size: 15px;
+    font-weight: 600;
+    background: var(--text-primary);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: background 0.2s;
+}
+
+.action-button:hover {
+    opacity: 0.9;
+}
+
+.complaint-footer {
+    margin-top: var(--space-2);
+    font-size: 13px;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+/* Resolution Record */
+.resolution-record {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    padding: var(--space-4);
+    border-radius: var(--radius-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.record-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #15803d;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+
+.record-text {
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 15px;
+    color: var(--text-primary);
+    font-style: italic;
+    line-height: 1.4;
+}
+
+.record-date {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    text-align: right;
+    margin-top: 4px;
+}
+
+/* Modal specific tweaks */
+.complaint-modal {
+    max-width: 500px;
+}
+
+.modal-context {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: var(--space-2);
+}
+
+.response-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: var(--border);
+    border-radius: var(--radius-sm);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 14px;
+    resize: vertical;
+}
+
+.response-form textarea:focus {
+    outline: none;
+    border-color: var(--text-primary);
+}
+
+.history-toggle-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    text-decoration: underline;
+    font-size: 13px;
+    cursor: pointer;
+    margin-top: 4px;
+    padding: 4px;
+}
+
+.history-toggle-btn:hover {
+    color: var(--text-primary);
+}
+
+.history-modal {
+    max-width: 400px;
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.history-item {
+    padding: var(--space-3);
+    background: var(--bg-secondary);
+    border-radius: var(--radius-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.history-date {
+    font-weight: 400;
+    color: var(--text-tertiary);
+    font-size: 12px;
+}
+
+.history-status.resolved {
+    font-size: 11px;
+    color: #15803d;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-top: 4px;
+}

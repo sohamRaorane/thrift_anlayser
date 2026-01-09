@@ -92,3 +92,39 @@ export async function fetchVendorRedFlags(vendorId) {
 
     return data
 }
+
+// Fetch complaints for a vendor
+export async function fetchVendorComplaints(vendorId) {
+    const { data, error } = await supabase
+        .from('complaints')
+        .select('*')
+        .eq('vendor_id', vendorId)
+        .order('created_at', { ascending: false })
+
+    if (error) {
+        console.error('Error fetching complaints:', error)
+        return []
+    }
+
+    return data
+}
+
+// Resolve a complaint
+export async function resolveComplaint(complaintId, resolutionText) {
+    const { data, error } = await supabase
+        .from('complaints')
+        .update({
+            status: 'resolved',
+            public_response: resolutionText,
+            resolved_at: new Date().toISOString()
+        })
+        .eq('id', complaintId)
+        .select()
+
+    if (error) {
+        console.error('Error resolving complaint:', error)
+        throw error
+    }
+
+    return data[0]
+}

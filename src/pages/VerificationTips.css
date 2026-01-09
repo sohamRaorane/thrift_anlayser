@@ -1,0 +1,132 @@
+/* Component styles for VerificationTips */
+.tips-shell {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Keep items centered or stretch? User said stretch sections. Let's make container full width but items can be centered or full. */
+    gap: var(--space-8);
+    padding-top: var(--space-4);
+    min-height: 100%;
+}
+
+.tips-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    width: 100%;
+    /* Ensure list takes full width */
+    padding: 0 var(--space-8);
+    max-width: 1000px;
+    /* Optional: keep some readability limit? User said stretch. Let's try full. */
+}
+
+.tip-row {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-3);
+    border-radius: var(--radius-sm);
+    transition: background-color 0.2s;
+    cursor: default;
+}
+
+.tip-row:hover {
+    background-color: var(--bg-secondary);
+}
+
+.tip-main {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.tip-bullet {
+    color: var(--text-tertiary);
+    font-size: 20px;
+    line-height: 0;
+}
+
+.tip-text {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.tip-sub {
+    padding-left: 28px;
+    /* Indent to align with text */
+    font-size: 15px;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.arrow-icon {
+    color: var(--text-tertiary);
+}
+
+.tips-actions {
+    margin-top: auto;
+    /* Push to bottom if container has height */
+    padding-bottom: var(--space-8);
+}
+
+.apply-btn {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--text-primary);
+    padding: 0.8em 2em;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s;
+    min-width: 180px;
+}
+
+.apply-btn:hover {
+    background: var(--text-primary);
+    color: var(--bg-panel);
+}
+
+.apply-btn.applied {
+    background: #dcfce7;
+    /* Light green background */
+    color: #166534;
+    /* Dark green text */
+    border-color: #166534;
+    cursor: default;
+}
+
+.apply-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Success States */
+.success-icon {
+    color: #166534;
+}
+
+.success-arrow {
+    color: #166534;
+}
+
+.tip-row.success {
+    background-color: #f0fdf4;
+    /* Very light green */
+    border: 1px solid #bbf7d0;
+}
+
+.tip-row.success .tip-text {
+    color: #15803d;
+}
+
+.tip-row.success .tip-sub {
+    color: #166534;
+    font-weight: 500;
+}
