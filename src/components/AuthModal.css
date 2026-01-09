@@ -17,8 +17,8 @@
     background: var(--bg-panel);
     border: var(--border-thick);
     border-radius: var(--radius-sm);
-    padding: var(--space-8);
-    max-width: 450px;
+    padding: 40px;
+    max-width: 420px;
     width: 100%;
     position: relative;
 }
@@ -44,11 +44,12 @@
 }
 
 .modal-title {
-    margin: 0 0 var(--space-6) 0;
+    margin: 0 0 24px 0;
     font-size: 24px;
     font-family: 'IBM Plex Serif', serif;
     font-weight: 600;
     color: var(--text-primary);
+    text-align: center;
 }
 
 .modal-tabs {
@@ -124,26 +125,25 @@
     background: white;
     color: black;
     border: 1px solid black;
-    padding: 1em 2em;
+    padding: 12px 24px;
     font-weight: 600;
     cursor: pointer;
     font-family: 'IBM Plex Sans', sans-serif;
     letter-spacing: 0.01em;
-    transition: all 0.3s ease-in-out;
-    font-size: 17px;
-    border-radius: 10em;
-    box-shadow: 0 0 0 0 black;
-    margin-top: var(--space-4);
+    transition: all 0.2s ease;
+    font-size: 15px;
+    border-radius: 100px;
+    margin-top: 24px;
+    width: 100%;
 }
 
 .auth-submit-btn:hover {
-    transform: translateY(-4px) translateX(-2px);
-    box-shadow: 2px 5px 0 0 black;
+    background: var(--bg-secondary);
+    transform: translateY(-1px);
 }
 
 .auth-submit-btn:active {
-    transform: translateY(2px) translateX(1px);
-    box-shadow: 0 0 0 0 black;
+    transform: translateY(0);
 }
 
 .auth-submit-btn:disabled {

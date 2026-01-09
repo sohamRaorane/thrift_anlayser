@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, NavLink, Outlet } from 'react-router-dom'
 import { BarChart3, MessageSquare, CheckCircle, ShoppingBag, Megaphone, Star, LogOut } from 'lucide-react'
 import { supabase } from '../lib/supabase'
 import './SellerDashboard.css'
 
 function SellerDashboard() {
   const navigate = useNavigate()
-  const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [user, setUser] = useState(null)
 
   useEffect(() => {
     checkUser()
@@ -32,11 +32,23 @@ function SellerDashboard() {
     return <div className="page">Loading...</div>
   }
 
+  const displayName = user?.user_metadata?.full_name || user?.email || 'Seller'
+  const isVerified = user?.user_metadata?.plan === 'verified'
+
   return (
     <section className="page seller-dashboard">
       <header className="dashboard-header">
         <div className="header-left">
           <h1>Seller Dashboard</h1>
+          <div className="user-welcome-row">
+            <span className="seller-welcome">Welcome, {displayName}</span>
+            {isVerified && (
+              <span className="header-verified-badge">
+                <Star size={10} fill="currentColor" stroke="none" />
+                VERIFIED
+              </span>
+            )}
+          </div>
         </div>
         <button className="logout-btn" onClick={handleLogout}>
           <LogOut size={16} strokeWidth={2} />
@@ -48,78 +60,55 @@ function SellerDashboard() {
         {/* Sidebar Navigation */}
         <aside className="dashboard-sidebar">
           <nav className="sidebar-nav">
-            <button className="nav-item active">
+            <NavLink
+              to="/dashboard"
+              end
+              className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
+            >
               <BarChart3 size={18} strokeWidth={2} />
               DripScore Metrics
-            </button>
-            <button className="nav-item">
+            </NavLink>
+            <NavLink
+              to="/dashboard/seller/inbox"
+              className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
+            >
               <MessageSquare size={18} strokeWidth={2} />
               Complaint Inbox
-            </button>
-            <button className="nav-item">
+            </NavLink>
+            <NavLink
+              to="/dashboard/seller/tips"
+              className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
+            >
               <CheckCircle size={18} strokeWidth={2} />
               Verification Tips
-            </button>
-            <button className="nav-item">
+            </NavLink>
+            <NavLink
+              to="/dashboard/seller/marketplace-preview"
+              className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
+            >
               <ShoppingBag size={18} strokeWidth={2} />
               View Marketplace
-            </button>
-            <button className="nav-item">
+            </NavLink>
+            <NavLink
+              to="/dashboard/seller/promote"
+              className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
+            >
               <Megaphone size={18} strokeWidth={2} />
               Promote Store
-            </button>
-            <button className="nav-item">
+            </NavLink>
+            <NavLink
+              to="/dashboard/seller/plan"
+              className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
+            >
               <Star size={18} strokeWidth={2} />
               FAD Verified Plan
-            </button>
+            </NavLink>
           </nav>
         </aside>
 
-        {/* Main Content */}
+        {/* Main Content Area */}
         <main className="dashboard-main">
-          <div className="verification-panel">
-            <h2>Verification Summary</h2>
-
-            <div className="verification-grid">
-              <div className="verification-item">
-                <div className="item-header">
-                  <span className="item-label">Instagram Ownership</span>
-                  <span className="status-badge verified">Verified</span>
-                </div>
-                <p className="item-detail">Connected: {user?.user_metadata?.instagram_url || 'Not provided'}</p>
-              </div>
-
-              <div className="verification-item">
-                <div className="item-header">
-                  <span className="item-label">Contact Verification</span>
-                  <span className="status-badge verified">Verified</span>
-                </div>
-                <p className="item-detail">Email: {user?.email}</p>
-              </div>
-
-              <div className="verification-item">
-                <div className="item-header">
-                  <span className="item-label">GSTIN</span>
-                  <span className="status-badge pending">Not Provided</span>
-                </div>
-                <p className="item-detail">{user?.user_metadata?.gstin || 'No GSTIN registered'}</p>
-              </div>
-
-              <div className="verification-item">
-                <div className="item-header">
-                  <span className="item-label">Drip Score</span>
-                  <span className="status-badge neutral">Neutral</span>
-                </div>
-                <p className="item-detail">No reviews yet</p>
-              </div>
-            </div>
-
-            <div className="overview-section">
-              <h3>Overview</h3>
-              <p>Your store is currently under verification. Once approved, you'll be listed on the FAD marketplace.</p>
-              <p className="muted">Verification typically takes 2-3 business days.</p>
-            </div>
-          </div>
+          <Outlet />
         </main>
       </div>
     </section>
