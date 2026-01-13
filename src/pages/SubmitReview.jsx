@@ -117,14 +117,14 @@ function SubmitReview() {
           </div>
 
           <div className="review-form">
-            <div className="form-row">
+            <div className="review-form-row">
               <div>
                 <p className="label">Overall rating</p>
                 {renderStarRating(overallRating, setOverallRating)}
               </div>
             </div>
 
-            <label className="form-row" htmlFor="experience">
+            <label className="review-form-row" htmlFor="experience">
               <p className="label">Experience details</p>
               <textarea
                 id="experience"
