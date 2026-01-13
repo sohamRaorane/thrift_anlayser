@@ -202,7 +202,7 @@
     gap: var(--space-5);
 }
 
-.form-row {
+.review-form-row {
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
