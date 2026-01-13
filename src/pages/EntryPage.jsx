@@ -44,7 +44,14 @@ function EntryPage() {
           </article>
         </Link>
       </div>
-    </section>
+
+
+      <div className="admin-access-footer" style={{ marginTop: '40px', textAlign: 'center' }}>
+        <Link to="/admin" style={{ color: '#aaa', fontSize: '12px', textDecoration: 'none', borderBottom: '1px dashed #aaa' }}>
+          Admin Portal Access
+        </Link>
+      </div>
+    </section >
   )
 }
 
