@@ -1,56 +1,107 @@
-import { useMemo } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { CheckCircle, Instagram, Image } from 'lucide-react'
-import { vendors } from '../data/vendors'
+import { vendors as mockVendors } from '../data/vendors'
 import { mockReviews } from '../data/mockReviews'
+import { fetchVendorById } from '../lib/supabaseData'
 import StarRating from '../components/StarRating'
 import './VendorProfile.css'
 
 function VendorProfile() {
   const { id } = useParams()
-  const baseVendor = vendors.find(v => v.id === id)
+  const [vendor, setVendor] = useState(null)
+  const [loading, setLoading] = useState(true)
 
-  // Mock vendor + review data for the UI; replace with API data later.
-  const vendor = useMemo(
-    () => {
-      const defaultVendor = {
-        name: 'VINTAGE THREADS',
-        username: 'vintagethreads.ldn',
-        image: null,
-        instagramUrl: 'https://instagram.com/vintagethreads.ldn',
-        verified: true,
-        description: 'Curated thrift drops, same-week dispatch, and responsive customer care for streetwear hunters.',
-        rating: 4.8,
-        totalReviews: 248,
-        dripScore: {
-          total: 92,
-          metrics: [
-            { label: 'On-time delivery', value: 94 },
-            { label: 'Complaint rate (low is better)', value: 8, invert: true },
-            { label: 'Refund behaviour', value: 90 },
-            { label: 'Customer satisfaction', value: 93 },
-          ],
-        },
-        verification: {
-          status: 'KYC verified • Business documentation on file',
-          lastChecked: '3 days ago',
-        },
-        transparency: {
-          deliveryTime: '3–5 business days',
-          refundPolicy: 'Free returns within 7 days; store credit after 14 days',
-          responseTime: 'Avg. 2 hours on DMs',
-          shipping: 'Tracked courier with proof of postage',
-        },
+  useEffect(() => {
+    async function loadVendor() {
+      setLoading(true)
+      try {
+        const dbVendor = await fetchVendorById(id)
+
+        if (dbVendor) {
+          // Image Fallback Logic
+          let imageUrl = dbVendor.image_url;
+          if (!imageUrl || imageUrl.includes('your-project-url.supabase.co')) {
+            // Try to find matching mock vendor to get local image
+            const mockMatch = mockVendors.find(mv => mv.username === dbVendor.instagram_handle);
+            if (mockMatch) {
+              imageUrl = mockMatch.image;
+            } else {
+              imageUrl = `/vendor-images/${dbVendor.instagram_handle}.png`;
+            }
+          }
+
+          // Map DB fields to UI structure
+          setVendor({
+            id: dbVendor.id,
+            name: dbVendor.business_name || dbVendor.store_name,
+            username: dbVendor.instagram_handle,
+            image: imageUrl,
+            instagramUrl: `https://instagram.com/${dbVendor.instagram_handle}`,
+            verified: dbVendor.verification_status === 'verified',
+            description: dbVendor.description || 'No description provided.',
+            rating: dbVendor.drip_score || 0,
+            totalReviews: dbVendor.total_reviews || 0,
+
+            // Construct rich data objects from available info or defaults
+            dripScore: {
+              total: (dbVendor.drip_score || 0) * 20, // Convert 5-star to 100-scale
+              metrics: [
+                { label: 'On-time delivery', value: 92 }, // Placeholder
+                { label: 'Complaint rate (low is better)', value: 5, invert: true },
+                { label: 'Refund behaviour', value: 88 },
+                { label: 'Customer satisfaction', value: 95 },
+              ],
+            },
+            verification: {
+              status: dbVendor.verification_status === 'verified'
+                ? 'KYC verified • Business documentation on file'
+                : 'Pending Verification',
+              lastChecked: 'Recently',
+            },
+            transparency: {
+              deliveryTime: '3–5 business days', // Placeholder
+              refundPolicy: 'Standard return policy applies',
+              responseTime: 'Within 24 hours',
+              shipping: 'Tracked shipping',
+            }
+          })
+        } else {
+          // Fallback for non-DB IDs (if any links rely on mock string IDs)
+          const mock = mockVendors.find(v => v.id === id)
+          if (mock) {
+            setVendor({
+              ...mock,
+              dripScore: { total: 80, metrics: [] }, // minimal defaults
+              verification: { status: 'Mock Data', lastChecked: 'N/A' },
+              transparency: { deliveryTime: 'N/A', refundPolicy: 'N/A', responseTime: 'N/A', shipping: 'N/A' }
+            })
+          }
+        }
+      } catch (err) {
+        console.error("Error loading vendor:", err)
+      } finally {
+        setLoading(false)
       }
+    }
+    loadVendor()
+  }, [id])
 
-      if (baseVendor) {
-        return { ...defaultVendor, ...baseVendor }
-      }
-      return defaultVendor
-    },
-    [baseVendor]
-  )
+  if (loading) {
+    return (
+      <section className="page vendor-profile" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh' }}>
+        <div>Loading vendor profile...</div>
+      </section>
+    )
+  }
 
+  if (!vendor) {
+    return (
+      <section className="page vendor-profile" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh' }}>
+        <div>Vendor not found.</div>
+      </section>
+    )
+  }
 
   return (
     <section className="page vendor-profile">
@@ -80,7 +131,7 @@ function VendorProfile() {
             <div className="vendor-metrics">
               <StarRating rating={vendor.rating} />
               <span className="muted">{vendor.totalReviews} reviews</span>
-              <span className="muted">ID: {id}</span>
+              <span className="muted">ID: {id.slice(0, 8)}...</span>
             </div>
             <Link to={`/review/${id}`} style={{ textDecoration: 'none', marginTop: '0.75rem', display: 'inline-block' }}>
               <button className="submit-review-btn">

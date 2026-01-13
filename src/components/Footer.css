@@ -1,0 +1,133 @@
+.footer-container {
+    background-color: var(--bg-secondary);
+    /* Assuming these vars exist based on App.css */
+    border-top: var(--border);
+    padding: var(--space-8) 0 var(--space-4);
+    margin-top: auto;
+    width: 100%;
+}
+
+.footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--space-8);
+    display: grid;
+    grid-template-columns: 2fr repeat(3, 1fr);
+    gap: var(--space-8);
+}
+
+.footer-section h3 {
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: var(--space-4);
+    color: var(--text-primary);
+}
+
+.brand-section {
+    padding-right: var(--space-8);
+}
+
+.footer-brand {
+    font-family: 'IBM Plex Serif', serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 var(--space-2);
+    color: var(--text-primary);
+}
+
+.footer-tagline {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-tertiary);
+    margin-bottom: var(--space-4);
+}
+
+.footer-description {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 300px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: var(--space-2);
+}
+
+.footer-section a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+}
+
+.footer-section a:hover {
+    color: var(--text-primary);
+    text-decoration: underline;
+}
+
+.contact-section p {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: var(--space-4);
+}
+
+.social-links {
+    display: flex;
+    gap: var(--space-4);
+}
+
+.footer-bottom {
+    max-width: 1400px;
+    margin: var(--space-8) auto 0;
+    padding: var(--space-6) var(--space-8) 0;
+    border-top: 1px solid var(--border-color, #e5e5e5);
+    /* Fallback if var not defined */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-tertiary);
+    font-size: 12px;
+}
+
+.scrolling-text {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: var(--space-6);
+    }
+
+    .brand-section {
+        padding-right: 0;
+        text-align: center;
+    }
+
+    .footer-description {
+        margin: 0 auto;
+    }
+
+    .footer-section {
+        text-align: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: var(--space-2);
+        text-align: center;
+    }
+}

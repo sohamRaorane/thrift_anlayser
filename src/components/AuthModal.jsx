@@ -40,8 +40,8 @@ function AuthModal({ isOpen, onClose, onLoginSuccess }) {
     }
 
     return (
-        <div className="modal-overlay" onClick={onClose}>
-            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+        <div className="auth-modal-overlay" onClick={onClose}>
+            <div className="auth-modal-content" onClick={(e) => e.stopPropagation()}>
                 <button className="modal-close" onClick={onClose}>
                     <X size={20} strokeWidth={2} />
                 </button>

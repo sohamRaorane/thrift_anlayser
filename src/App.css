@@ -59,6 +59,12 @@
   font-weight: 400;
 }
 
+.brand-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 /* Text-based navigation */
 .nav-links {
   display: flex;
@@ -75,6 +81,9 @@
   padding: var(--space-2) 0;
   border-bottom: 2px solid transparent;
   transition: all 0.2s ease;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.05em;
 }
 
 .nav-links a:hover {

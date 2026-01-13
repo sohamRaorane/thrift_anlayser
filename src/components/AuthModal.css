@@ -1,6 +1,6 @@
 /* Auth Modal */
 
-.modal-overlay {
+.auth-modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -13,12 +13,12 @@
     padding: var(--space-4);
 }
 
-.modal-content {
+.auth-modal-content {
     background: var(--bg-panel);
     border: var(--border-thick);
     border-radius: var(--radius-sm);
     padding: 40px;
-    max-width: 420px;
+    max-width: 480px;
     width: 100%;
     position: relative;
 }
