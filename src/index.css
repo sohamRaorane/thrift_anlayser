@@ -142,39 +142,40 @@ a:hover {
 /* Buttons - modern with animation */
 button {
   font-family: 'IBM Plex Sans', sans-serif;
-  font-weight: 600;
-  font-size: 17px;
-  letter-spacing: 0.01em;
-  background: white;
-  color: black;
-  border: 1px solid black;
-  padding: 1em 2em;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  background: var(--text-primary);
+  color: white;
+  border: 1px solid var(--text-primary);
+  padding: var(--space-2) var(--space-4);
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  border-radius: 10em;
-  box-shadow: 0 0 0 0 black;
+  transition: all 0.2s ease;
+  border-radius: var(--radius-sm);
+  box-shadow: none;
 }
 
 button:hover {
-  transform: translateY(-4px) translateX(-2px);
-  box-shadow: 2px 5px 0 0 black;
+  background: var(--text-secondary);
+  border-color: var(--text-secondary);
+  transform: translateY(-1px);
 }
 
 button:active {
-  transform: translateY(2px) translateX(1px);
-  box-shadow: 0 0 0 0 black;
+  transform: translateY(0);
 }
 
 button.secondary {
   background: transparent;
   color: var(--text-primary);
-  border: 1px solid black;
+  border: 1px solid var(--border-strong);
 }
 
 button.secondary:hover {
   background: var(--bg-secondary);
-  transform: translateY(-4px) translateX(-2px);
-  box-shadow: 2px 5px 0 0 black;
+  border-color: var(--text-primary);
+  transform: translateY(-1px);
+  box-shadow: none;
 }
 
 /* Dividers */

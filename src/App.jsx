@@ -14,6 +14,7 @@ import MarketplacePreview from './pages/MarketplacePreview.jsx'
 import PromoteStore from './pages/PromoteStore.jsx'
 import VerifiedPlan from './pages/VerifiedPlan.jsx'
 import AuthModal from './components/AuthModal.jsx'
+import Footer from './components/Footer.jsx'
 import './App.css'
 
 // Admin Components
@@ -55,10 +56,12 @@ function App() {
       {/* Refined Header */}
       <header className="top-bar">
         <div className="masthead">
-          <div>
-            <h1 className="brand">FAD</h1>
-            <p className="tagline">Trust Benchmark for Verified Thrift Stores</p>
-          </div>
+          <Link to="/" className="brand-link">
+            <div>
+              <h1 className="brand">FAD</h1>
+              <p className="tagline">Trust Benchmark for Verified Thrift Stores</p>
+            </div>
+          </Link>
           <nav className="nav-links">
             <Link to="/">Home</Link>
             <Link to="/discover">Discover</Link>
@@ -97,6 +100,8 @@ function App() {
           </Route>
         </Routes>
       </main>
+
+      <Footer />
 
       <AuthModal
         isOpen={showAuthModal}

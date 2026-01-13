@@ -23,17 +23,42 @@ function Discover() {
     console.log('DEBUG: Starting loadVendors')
     setLoading(true)
     try {
-      console.log('DEBUG: Forcing mock data use')
-      // Simulate network delay
-      await new Promise(resolve => setTimeout(resolve, 500))
+      // Fetch from Supabase
+      const data = await fetchVendors()
 
-      const mappedVendors = mockVendors // Use imports directly
+      if (data && data.length > 0) {
+        // Normalize data structure
+        const mappedData = data.map(v => {
+          // Check if image URL is the placeholder and fallback if needed
+          let imageUrl = v.image_url || v.image;
+          if (imageUrl && imageUrl.includes('your-project-url.supabase.co')) {
+            // Try to find matching mock vendor to get local image
+            const mockMatch = mockVendors.find(mv => mv.username === (v.instagram_handle || v.username));
+            if (mockMatch) {
+              imageUrl = mockMatch.image;
+            } else {
+              // Fallback to relative path if naming convention matches
+              imageUrl = `/vendor-images/${v.instagram_handle || v.username}.png`; // fallback attempt
+            }
+          }
 
-      console.log('DEBUG: Setting vendors state:', mappedVendors)
-      if (mappedVendors && mappedVendors.length > 0) {
-        setVendors(mappedVendors)
+          return {
+            ...v,
+            id: v.id,
+            name: v.business_name || v.name,
+            username: v.instagram_handle || v.username,
+            verified: v.verification_status === 'verified' || v.verified,
+            score: v.drip_score || v.score,
+            category: v.category,
+            location: v.location,
+            description: v.description,
+            image: imageUrl
+          };
+        })
+        setVendors(mappedData)
       } else {
-        console.error('DEBUG: Mock vendors empty!')
+        console.log('DEBUG: No Supabase data, falling back to mock')
+        setVendors(mockVendors)
       }
 
     } catch (error) {
@@ -185,6 +210,7 @@ function Discover() {
                         src={vendor.image}
                         alt={vendor.name}
                         style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'var(--radius-sm)' }}
+                        onError={(e) => { e.target.onerror = null; e.target.src = '/placeholder.png' }} // Basic error handling
                       />
                     ) : (
                       '📷'
