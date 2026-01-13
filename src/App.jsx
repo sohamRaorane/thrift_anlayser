@@ -16,6 +16,17 @@ import VerifiedPlan from './pages/VerifiedPlan.jsx'
 import AuthModal from './components/AuthModal.jsx'
 import './App.css'
 
+// Admin Components
+import AdminLayout from './components/layouts/AdminLayout.jsx'
+import AdminDashboard from './pages/admin/AdminDashboard.jsx'
+import VendorVerification from './pages/admin/VendorVerification.jsx'
+import MarketplaceListings from './pages/admin/MarketplaceListings.jsx'
+import ReviewModeration from './pages/admin/ReviewModeration.jsx'
+import CertificateManagement from './pages/admin/CertificateManagement.jsx'
+import SellerAnalytics from './pages/admin/SellerAnalytics.jsx'
+import ComplaintResolution from './pages/admin/ComplaintResolution.jsx'
+import SubscriptionManagement from './pages/admin/SubscriptionManagement.jsx'
+
 function App() {
   const [showAuthModal, setShowAuthModal] = useState(false)
 
@@ -71,6 +82,18 @@ function App() {
             <Route path="seller/marketplace-preview" element={<MarketplacePreview />} />
             <Route path="seller/promote" element={<PromoteStore />} />
             <Route path="seller/plan" element={<VerifiedPlan />} />
+          </Route>
+
+          {/* Admin Routes */}
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<AdminDashboard />} />
+            <Route path="verification" element={<VendorVerification />} />
+            <Route path="listings" element={<MarketplaceListings />} />
+            <Route path="reviews" element={<ReviewModeration />} />
+            <Route path="certificates" element={<CertificateManagement />} />
+            <Route path="analytics" element={<SellerAnalytics />} />
+            <Route path="complaints" element={<ComplaintResolution />} />
+            <Route path="subscriptions" element={<SubscriptionManagement />} />
           </Route>
         </Routes>
       </main>
