@@ -1,135 +1,148 @@
-/* Admin Layout Structure */
+/* Admin Layout Structure - Editorial Institutional */
 .admin-container {
   display: flex;
   min-height: 100vh;
-  background-color: #f8f9fa;
-  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--bg-primary);
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: var(--text-primary);
 }
 
 /* Sidebar */
 .admin-sidebar {
   width: 260px;
-  background-color: #ffffff;
-  border-right: 1px solid #e2e8f0;
+  background-color: var(--bg-panel);
+  border-right: var(--border);
   display: flex;
   flex-direction: column;
-  position: fixed;
-  height: 100vh;
-  z-index: 1000;
+  min-height: 100vh;
 }
 
 .admin-sidebar-header {
-  padding: 24px;
-  border-bottom: 1px solid #e2e8f0;
+  padding: var(--space-6);
+  border-bottom: var(--border);
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--space-3);
 }
 
 .admin-sidebar-header h2 {
+  font-family: 'IBM Plex Serif', serif;
   font-size: 24px;
-  font-weight: 800;
+  font-weight: 600;
   margin: 0;
-  color: #1a202c;
+  color: var(--text-primary);
 }
 
 .admin-badge {
-  background-color: #000;
-  color: #fff;
+  background-color: var(--text-primary);
+  color: var(--bg-panel);
   font-size: 10px;
   padding: 2px 6px;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   font-weight: 700;
   letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
 .admin-nav {
-  padding: 24px 16px;
+  padding: var(--space-6) var(--space-4);
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-2);
 }
 
 .nav-section-title {
-  color: #a0aec0;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  margin-bottom: 12px;
-  padding-left: 12px;
+  color: var(--text-tertiary);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+  padding-left: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.nav-section-title:first-child {
+  margin-top: 0;
 }
 
 .nav-item {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px;
-  border-radius: 8px;
-  color: #4a5568;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
   text-decoration: none;
   font-weight: 500;
+  font-size: 14px;
   transition: all 0.2s ease;
+  border: 1px solid transparent;
 }
 
 .nav-item:hover {
-  background-color: #edf2f7;
-  color: #2d3748;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
 }
 
 .nav-item.active {
-  background-color: #000;
-  color: #fff;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--text-primary);
+  font-weight: 600;
 }
 
 /* Main Content */
 .admin-content {
-  margin-left: 260px;
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
 .admin-header {
-  height: 70px;
-  background-color: #fff;
-  border-bottom: 1px solid #e2e8f0;
+  height: 80px;
+  background-color: var(--bg-panel);
+  border-bottom: var(--border);
   display: flex;
   align-items: center;
-  padding: 0 40px;
+  padding: 0 var(--space-8);
 }
 
 .admin-header h1 {
-  font-size: 20px;
-  font-weight: 700;
-  color: #1a202c;
+  font-family: 'IBM Plex Serif', serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-primary);
   margin: 0;
 }
 
 .admin-page-wrapper {
-  padding: 40px;
+  padding: var(--space-8);
   flex: 1;
   overflow-y: auto;
 }
 
 /* Common Components for Admin Pages */
 .admin-card {
-  background: white;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  background: var(--bg-panel);
+  border: var(--border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-6);
+  /* No shadow, use border */
 }
 
 .page-title {
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 24px;
-  color: #1a202c;
+  font-family: 'IBM Plex Serif', serif;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: var(--space-6);
+  color: var(--text-primary);
 }
 
 /* Grid Layouts */
 .dashboard-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 24px;
+  gap: var(--space-6);
 }
