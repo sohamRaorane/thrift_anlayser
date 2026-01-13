@@ -1,16 +1,17 @@
-
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { ArrowLeft, Upload, Image, Instagram } from 'lucide-react'
 import { reviewQuestions } from '../data/reviewQuestions'
-import { vendors } from '../data/vendors'
+import { vendors as mockVendors } from '../data/vendors'
+import { fetchVendorById } from '../lib/supabaseData'
 import StarRating from '../components/StarRating'
 import './SubmitReview.css'
 
 function SubmitReview() {
   const navigate = useNavigate()
   const { id } = useParams()
-  const vendor = vendors.find(v => v.id === id)
+  const [vendor, setVendor] = useState(null)
+  const [loading, setLoading] = useState(true)
 
   const [overallRating, setOverallRating] = useState(0)
   const [detailRatings, setDetailRatings] = useState(
@@ -19,9 +20,58 @@ function SubmitReview() {
   const [experience, setExperience] = useState('')
   const [uploadedFiles, setUploadedFiles] = useState([])
 
+  useEffect(() => {
+    async function loadVendor() {
+      setLoading(true)
+      try {
+        const dbVendor = await fetchVendorById(id)
+
+        if (dbVendor) {
+          // Image Fallback Logic
+          let imageUrl = dbVendor.image_url;
+          if (!imageUrl || imageUrl.includes('your-project-url.supabase.co')) {
+            const mockMatch = mockVendors.find(mv => mv.username === dbVendor.instagram_handle);
+            if (mockMatch) {
+              imageUrl = mockMatch.image;
+            } else {
+              imageUrl = `/vendor-images/${dbVendor.instagram_handle}.png`;
+            }
+          }
+
+          setVendor({
+            id: dbVendor.id,
+            name: dbVendor.business_name || dbVendor.store_name,
+            username: dbVendor.instagram_handle,
+            image: imageUrl,
+            instagramUrl: `https://instagram.com/${dbVendor.instagram_handle}`,
+            description: dbVendor.description || 'No description provided.',
+            score: dbVendor.drip_score || 0,
+          })
+        } else {
+          // Mock fallback for non-DB IDs
+          const mock = mockVendors.find(v => v.id === id)
+          if (mock) setVendor(mock)
+        }
+      } catch (err) {
+        console.error("Error loading vendor:", err)
+      } finally {
+        setLoading(false)
+      }
+    }
+    loadVendor()
+  }, [id])
+
   const handleFileUpload = (e) => {
     const files = Array.from(e.target.files)
     setUploadedFiles(prev => [...prev, ...files])
+  }
+
+  if (loading) {
+    return (
+      <section className="page submit-review" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '50vh' }}>
+        <div>Loading...</div>
+      </section>
+    )
   }
 
   if (!vendor) {
