@@ -28,6 +28,7 @@ function AuthModal({ isOpen, onClose, onLoginSuccess }) {
             onLoginSuccess(data.user)
             onClose()
         } catch (error) {
+            console.error('Login error:', error)
             setError(error.message)
         } finally {
             setLoading(false)
