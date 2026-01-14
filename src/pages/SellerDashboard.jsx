@@ -56,7 +56,7 @@ function SellerDashboard() {
         </button>
       </header>
 
-      <div className="dashboard-grid">
+      <div className="seller-dashboard-grid">
         {/* Sidebar Navigation */}
         <aside className="dashboard-sidebar">
           <nav className="sidebar-nav">

@@ -42,9 +42,9 @@
     box-shadow: none;
 }
 
-.dashboard-grid {
+.seller-dashboard-grid {
     display: grid;
-    grid-template-columns: 250px 1fr;
+    grid-template-columns: 30% 1fr;
     gap: var(--space-6);
     align-items: start;
 }
