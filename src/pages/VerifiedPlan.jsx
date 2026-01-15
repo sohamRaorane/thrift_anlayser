@@ -1,119 +1,129 @@
 import React, { useState, useEffect } from 'react';
-import { Check, Star, ShieldCheck } from 'lucide-react';
+import { Check, Star, ShieldCheck, Zap, BarChart } from 'lucide-react';
 import { supabase } from '../lib/supabase';
+import { subscriptionService } from '../services/subscriptionService';
 import './VerifiedPlan.css';
 
 const VerifiedPlan = () => {
-    const [isVerified, setIsVerified] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [currentSubscription, setCurrentSubscription] = useState(null);
+    const [activePlan, setActivePlan] = useState(null);
+    const [promotions, setPromotions] = useState({});
 
     useEffect(() => {
-        checkStatus();
+        loadData();
     }, []);
 
-    const checkStatus = async () => {
-        const { data: { user } } = await supabase.auth.getUser();
-        if (user?.user_metadata?.plan === 'verified') {
-            setIsVerified(true);
-        }
-        setLoading(false);
-    };
-
-    const handleUpgrade = async () => {
-        setLoading(true);
-        // Simulate payment processing...
-        setTimeout(async () => {
+    const loadData = async () => {
+        try {
             const { data: { user } } = await supabase.auth.getUser();
-            if (user) {
-                await supabase.auth.updateUser({
-                    data: { plan: 'verified' }
+            if (!user) return;
+
+            const subData = await subscriptionService.getSellerSubscription(user.id);
+
+            if (subData) {
+                setCurrentSubscription(subData);
+                setActivePlan(subData.plans);
+                setPromotions({
+                    campaign: subData.promo_active_campaign,
+                    boost: subData.promo_visibility_boost,
+                    tracking: subData.promo_click_tracking
                 });
-                setIsVerified(true);
-                // Force a reload or notify parent to update dashboard header
-                window.location.reload();
+            } else {
+                setActivePlan({ name: 'Free', price_monthly: 0, features: ['Basic Listing'] });
             }
+        } catch (error) {
+            console.error(error);
+        } finally {
             setLoading(false);
-        }, 1500);
+        }
     };
 
     const handleDeactivate = async () => {
-        if (!window.confirm("Are you sure you want to cancel your verified plan? You will lose access to premium features.")) {
-            return;
-        }
-        setLoading(true);
-        // Simulate processing...
-        setTimeout(async () => {
-            const { data: { user } } = await supabase.auth.getUser();
-            if (user) {
-                await supabase.auth.updateUser({
-                    data: { plan: 'free' }
-                });
-                setIsVerified(false);
-                window.location.reload();
-            }
-            setLoading(false);
-        }, 1000);
+        if (!window.confirm("Contact support to downgrade your plan.")) return;
+        // Real downgrading would involve payment logic, keeping it simple for now
     };
 
-    if (loading) return <div className="plan-shell">Loading...</div>;
+    if (loading) return <div className="plan-shell">Loading plan details...</div>;
+
+    const isPaidPlan = activePlan?.price_monthly > 0;
 
     return (
         <div className="plan-shell">
-            <div className={`plan-card ${isVerified ? 'verified-card' : ''}`}>
+            <div className={`plan-card ${isPaidPlan ? 'verified-card' : ''}`}>
                 <div className="plan-header">
                     <span className="current-status-label">Current Plan</span>
                     <div className="plan-title-row">
-                        {isVerified ? (
+                        {isPaidPlan ? (
                             <>
-                                <h2 className="plan-name verified-text">FAD Verified</h2>
+                                <h2 className="plan-name verified-text">{activePlan?.name || 'Verified Plan'}</h2>
                                 <div className="verified-badge-large">
                                     <Star size={16} fill="white" stroke="none" />
-                                    <span>OFFICIAL</span>
+                                    <span>ACTIVE</span>
                                 </div>
                             </>
                         ) : (
-                            <h3 className="plan-name">Free Tier</h3>
+                            <h3 className="plan-name">{activePlan?.name || 'Free Tier'}</h3>
                         )}
                     </div>
+                    {isPaidPlan && <div style={{ marginTop: '4px', opacity: 0.8 }}>₹{activePlan?.price_monthly}/mo</div>}
                 </div>
 
                 <div className="plan-divider"></div>
 
                 <div className="plan-content">
-                    <div className="content-block">
-                        <div className="feature-row">
-                            <ShieldCheck size={18} className="check-icon" />
-                            <span>Ownership verification {isVerified && '(Active)'}</span>
-                        </div>
-                        <div className="feature-row">
-                            <ShieldCheck size={18} className="check-icon" />
-                            <span>Basic DripScore {isVerified && '(Active)'}</span>
-                        </div>
-                    </div>
-
-                    {!isVerified && (
-                        <div className="content-block upgrade-block">
-                            <h3 className="upgrade-title">Upgrade benefits:</h3>
-                            <ul className="upgrade-list">
-                                <li>Higher visibility</li>
-                                <li>Priority support</li>
-                                <li>Advanced analytics</li>
-                            </ul>
+                    {/* Active Promotions Badges */}
+                    {(promotions.campaign || promotions.boost || promotions.tracking) && (
+                        <div className="content-block" style={{ marginBottom: '1.5rem' }}>
+                            <h3 className="upgrade-title" style={{ marginBottom: '10px' }}>Active Promotions:</h3>
+                            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                                {promotions.campaign && (
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem', padding: '6px 12px', background: '#d1fae5', color: '#065f46', borderRadius: '50px', fontWeight: '600' }}>
+                                        <Zap size={14} /> Campaign
+                                    </div>
+                                )}
+                                {promotions.boost && (
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem', padding: '6px 12px', background: '#dbeafe', color: '#1e40af', borderRadius: '50px', fontWeight: '600' }}>
+                                        <BarChart size={14} /> Boost
+                                    </div>
+                                )}
+                                {promotions.tracking && (
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem', padding: '6px 12px', background: '#f3f4f6', color: '#374151', borderRadius: '50px', fontWeight: '600' }}>
+                                        <ShieldCheck size={14} /> Tracking
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     )}
 
-                    {isVerified && (
+                    <div className="content-block">
+                        <h3 className="upgrade-title">Included Features:</h3>
+                        {activePlan?.features?.length > 0 ? (
+                            activePlan.features.map((feature, idx) => (
+                                <div key={idx} className="feature-row">
+                                    <Check size={18} className="check-icon" />
+                                    <span>{feature}</span>
+                                </div>
+                            ))
+                        ) : (
+                            <div className="feature-row">
+                                <Check size={18} className="check-icon" />
+                                <span>Standard Access</span>
+                            </div>
+                        )}
+                    </div>
+
+                    {!isPaidPlan && (
                         <div className="content-block upgrade-block">
-                            <h3 className="upgrade-title">Your benefits are active.</h3>
-                            <p className="description-text">You now have access to premium features in the dashboard.</p>
+                            <p className="description-text">Upgrade to "Pro Seller" or "Featured Vendor" to unlock more visibility and analytics.</p>
                         </div>
                     )}
                 </div>
 
                 <div className="plan-action">
-                    {!isVerified ? (
-                        <button className="upgrade-btn" onClick={handleUpgrade}>
-                            UPGRADE NOW!
+                    {!isPaidPlan ? (
+                        <button className="upgrade-btn">
+                            Contact Admin to Upgrade
                         </button>
                     ) : (
                         <div className="active-plan-actions">
@@ -121,7 +131,7 @@ const VerifiedPlan = () => {
                                 PLAN ACTIVE
                             </button>
                             <button className="deactivate-btn" onClick={handleDeactivate}>
-                                Deactivate Plan
+                                Request Cancel
                             </button>
                         </div>
                     )}

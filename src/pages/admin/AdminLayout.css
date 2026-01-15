@@ -1,0 +1,299 @@
+/* Admin Layout Styles */
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #f8f9fa;
+  /* Light neutral background */
+  font-family: 'Inter', sans-serif;
+  position: relative;
+}
+
+/* Sidebar */
+.admin-sidebar {
+  width: 260px;
+  height: 100vh;
+  position: fixed;
+  /* Fixing the sidebar */
+  top: 0;
+  left: 0;
+  background-color: white;
+  border-right: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1rem;
+  z-index: 50;
+  /* Ensure it stays above content */
+  overflow-y: auto;
+}
+
+.admin-sidebar .sidebar-logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  padding-left: 0.75rem;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.admin-sidebar .nav-section {
+  margin-bottom: 2rem;
+}
+
+.admin-sidebar .nav-section-title {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #9ca3af;
+  margin-bottom: 0.75rem;
+  padding-left: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.admin-sidebar a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0.75rem;
+  border-radius: 8px;
+  color: #4b5563;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  margin-bottom: 4px;
+}
+
+.admin-sidebar a:hover {
+  background-color: #f3f4f6;
+  color: #111827;
+}
+
+.admin-sidebar a.active {
+  background-color: #f3f4f6;
+  color: #111827;
+  font-weight: 600;
+}
+
+/* Header */
+.admin-header {
+  height: 64px;
+  background-color: white;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.admin-header-left {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* Content Area - shifted to the right */
+.admin-content-area {
+  margin-left: 260px;
+  /* Exact width of sidebar */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: calc(100% - 260px);
+}
+
+.admin-main {
+  flex: 1;
+  padding: 2rem;
+}
+
+/* Shared Components within Admin */
+.admin-page-header {
+  margin-bottom: 2rem;
+}
+
+.admin-page-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* Card Style for Admin Pages */
+.admin-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.badge-pill {
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge-active {
+  background-color: #def7ec;
+  color: #03543f;
+}
+
+.badge-warning {
+  background-color: #fdf6b2;
+  color: #723b13;
+}
+
+.badge-error {
+  background-color: #fde8e8;
+  color: #9b1c1c;
+}
+
+.badge-neutral {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+/* Sidebar */
+.admin-sidebar {
+  width: 260px;
+  background-color: white;
+  border-right: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1rem;
+  flex-shrink: 0;
+}
+
+.admin-sidebar .sidebar-logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  padding-left: 0.75rem;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.admin-sidebar .nav-section {
+  margin-bottom: 2rem;
+}
+
+.admin-sidebar .nav-section-title {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #9ca3af;
+  margin-bottom: 0.75rem;
+  padding-left: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.admin-sidebar a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0.75rem;
+  border-radius: 8px;
+  color: #4b5563;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  margin-bottom: 4px;
+}
+
+.admin-sidebar a:hover {
+  background-color: #f3f4f6;
+  color: #111827;
+}
+
+.admin-sidebar a.active {
+  background-color: #f3f4f6;
+  color: #111827;
+  font-weight: 600;
+}
+
+/* Header */
+.admin-header {
+  height: 64px;
+  background-color: white;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+.admin-header-left {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.admin-content-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.admin-main {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+/* Shared Components within Admin */
+.admin-page-header {
+  margin-bottom: 2rem;
+}
+
+.admin-page-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* Card Style for Admin Pages */
+.admin-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.badge-pill {
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.badge-active {
+  background-color: #def7ec;
+  color: #03543f;
+}
+
+.badge-warning {
+  background-color: #fdf6b2;
+  color: #723b13;
+}
+
+.badge-error {
+  background-color: #fde8e8;
+  color: #9b1c1c;
+}
+
+.badge-neutral {
+  background-color: #f3f4f6;
+  color: #374151;
+}
