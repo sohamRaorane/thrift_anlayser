@@ -36,6 +36,25 @@ const VerifiedPlan = () => {
         }, 1500);
     };
 
+    const handleDeactivate = async () => {
+        if (!window.confirm("Are you sure you want to cancel your verified plan? You will lose access to premium features.")) {
+            return;
+        }
+        setLoading(true);
+        // Simulate processing...
+        setTimeout(async () => {
+            const { data: { user } } = await supabase.auth.getUser();
+            if (user) {
+                await supabase.auth.updateUser({
+                    data: { plan: 'free' }
+                });
+                setIsVerified(false);
+                window.location.reload();
+            }
+            setLoading(false);
+        }, 1000);
+    };
+
     if (loading) return <div className="plan-shell">Loading...</div>;
 
     return (
@@ -97,9 +116,14 @@ const VerifiedPlan = () => {
                             UPGRADE NOW!
                         </button>
                     ) : (
-                        <button className="upgrade-btn disabled" disabled>
-                            PLAN ACTIVE
-                        </button>
+                        <div className="active-plan-actions">
+                            <button className="upgrade-btn disabled" disabled>
+                                PLAN ACTIVE
+                            </button>
+                            <button className="deactivate-btn" onClick={handleDeactivate}>
+                                Deactivate Plan
+                            </button>
+                        </div>
                     )}
                 </div>
             </div>
