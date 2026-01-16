@@ -14,6 +14,7 @@ import MarketplacePreview from './pages/MarketplacePreview.jsx'
 import PromoteStore from './pages/PromoteStore.jsx'
 import VerifiedPlan from './pages/VerifiedPlan.jsx'
 import AuthModal from './components/AuthModal.jsx'
+import AuthPage from './pages/AuthPage.jsx'
 import Footer from './components/Footer.jsx'
 import './App.css'
 
@@ -84,6 +85,7 @@ function App() {
           <Route path="/vendor/:id" element={<VendorProfile />} />
           <Route path="/review/:id" element={<SubmitReview />} />
           <Route path="/report" element={<ReportStore />} />
+          <Route path="/auth" element={<AuthPage />} />
           <Route path="/onboarding" element={<SellerOnboarding />} />
 
           {/* Seller Dashboard */}

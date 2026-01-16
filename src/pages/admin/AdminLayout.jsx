@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import {
     LayoutDashboard,
     BadgeCheck,
@@ -7,11 +7,13 @@ import {
     MessageSquare,
     BarChart3,
     FileText,
-    CreditCard
+    CreditCard,
+    LogOut
 } from 'lucide-react';
 import './AdminLayout.css';
 
 const AdminLayout = () => {
+    const navigate = useNavigate();
     return (
         <div className="admin-layout">
             {/* Sidebar */}
@@ -62,6 +64,38 @@ const AdminLayout = () => {
                         </NavLink>
                     </div>
                 </nav>
+
+                <div style={{ marginTop: 'auto', paddingTop: '1rem', borderTop: '1px solid #e5e7eb' }}>
+                    <button
+                        onClick={() => navigate('/')}
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '12px',
+                            width: '100%',
+                            padding: '12px',
+                            border: 'none',
+                            background: 'transparent',
+                            color: '#4b5563',
+                            fontSize: '0.9rem',
+                            fontWeight: '500',
+                            cursor: 'pointer',
+                            borderRadius: '8px',
+                            transition: 'all 0.2s'
+                        }}
+                        onMouseEnter={(e) => {
+                            e.currentTarget.style.backgroundColor = '#f3f4f6';
+                            e.currentTarget.style.color = '#111827';
+                        }}
+                        onMouseLeave={(e) => {
+                            e.currentTarget.style.backgroundColor = 'transparent';
+                            e.currentTarget.style.color = '#4b5563';
+                        }}
+                    >
+                        <LogOut size={18} />
+                        <span>Back to Home</span>
+                    </button>
+                </div>
             </aside>
 
             {/* Main Content Area */}

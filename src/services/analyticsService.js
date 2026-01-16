@@ -13,17 +13,14 @@ export const analyticsService = {
     getSellers: async () => {
         const { data, error } = await supabase
             .from('vendors')
-            .select('id, business_name, instagram_handle')
+            .select('id, business_name, store_name, instagram_handle')
             .order('business_name', { ascending: true });
 
         if (error) {
             console.error('Error fetching sellers:', error);
             return [];
         }
-        return data.map(v => ({
-            id: v.id,
-            name: v.business_name || v.instagram_handle || 'Unnamed Vendor'
-        }));
+        return data; // Return raw data so ReportStore can filter by fields
     },
 
     // 2. Get All Analytics for a Seller

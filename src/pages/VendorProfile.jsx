@@ -2,14 +2,15 @@ import { useState, useEffect, useMemo } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { CheckCircle, Instagram, Image } from 'lucide-react'
 import { vendors as mockVendors } from '../data/vendors'
-import { mockReviews } from '../data/mockReviews'
 import { fetchVendorById } from '../lib/supabaseData'
+import { reviewsService } from '../services/reviewsService'
 import StarRating from '../components/StarRating'
 import './VendorProfile.css'
 
 function VendorProfile() {
   const { id } = useParams()
   const [vendor, setVendor] = useState(null)
+  const [reviews, setReviews] = useState([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -84,7 +85,19 @@ function VendorProfile() {
         setLoading(false)
       }
     }
-    loadVendor()
+
+
+    async function loadReviews() {
+      try {
+        const data = await reviewsService.getVendorReviews(id);
+        setReviews(data);
+      } catch (err) {
+        console.error("Error loading reviews", err);
+      }
+    }
+
+    loadVendor();
+    loadReviews();
   }, [id])
 
   if (loading) {
@@ -210,31 +223,41 @@ function VendorProfile() {
       <section className="vendor-panel review-panel">
         <div className="panel-head">
           <h3>Verified customer reviews</h3>
-          <span className="pill muted">Mock data</span>
+          <span className="pill muted">{reviews.length} Reviews</span>
         </div>
         <div className="review-list">
-          {mockReviews.map((review) => (
-            <article key={review.id} className="review-card">
-              <div className="review-top">
-                <div>
-                  <h4>{review.title}</h4>
-                  <div className="review-meta">
-                    <StarRating rating={review.rating} />
-                    <span className="muted">{review.author}</span>
-                    <span className="muted">{review.date}</span>
+          {reviews.length === 0 ? (
+            <p style={{ color: '#666', fontStyle: 'italic' }}>No reviews yet. Be the first to review!</p>
+          ) : (
+            reviews.map((review) => {
+              if (review.status === 'removed') {
+                return (
+                  <article key={review.id} className="review-card review-removed" style={{ opacity: 0.6, background: '#f9f9f9', borderStyle: 'dashed' }}>
+                    <div className="review-top">
+                      <span style={{ fontSize: '0.85rem', color: '#999', fontStyle: 'italic' }}>
+                        Review removed by moderator
+                      </span>
+                    </div>
+                  </article>
+                )
+              }
+              return (
+                <article key={review.id} className="review-card">
+                  <div className="review-top">
+                    <div>
+                      <h4>{review.reviewer_name || 'Anonymous'}</h4>
+                      <div className="review-meta">
+                        <StarRating rating={review.rating} />
+                        <span className="muted">{new Date(review.created_at).toLocaleDateString()}</span>
+                      </div>
+                    </div>
+                    {/* Tags or other metadata could go here */}
                   </div>
-                </div>
-                <div className="tag-row">
-                  {review.tags.map((tag) => (
-                    <span key={tag} className="pill small">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <p className="review-body">{review.body}</p>
-            </article>
-          ))}
+                  <p className="review-body">{review.review_text}</p>
+                </article>
+              )
+            })
+          )}
         </div>
       </section>
     </section>

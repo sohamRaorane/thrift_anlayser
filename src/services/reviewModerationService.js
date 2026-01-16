@@ -32,7 +32,7 @@ export const reviewModerationService = {
     removeReview: async (reviewId) => {
         const { error } = await supabase
             .from('reviews')
-            .update({ moderation_status: 'removed', is_flagged: false })
+            .update({ status: 'removed', is_flagged: false })
             .eq('id', reviewId);
 
         if (error) throw error;
@@ -45,7 +45,7 @@ export const reviewModerationService = {
     markSafe: async (reviewId) => {
         const { error } = await supabase
             .from('reviews')
-            .update({ moderation_status: 'published', is_flagged: false })
+            .update({ status: 'published', is_flagged: false })
             .eq('id', reviewId);
 
         if (error) throw error;
