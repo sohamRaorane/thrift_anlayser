@@ -37,7 +37,7 @@
 }
 
 /* Official verification mark */
-.hero-badge {
+.entry-hero .hero-badge {
     width: 60px;
     height: 60px;
     border: 2px solid var(--text-primary);
@@ -52,7 +52,7 @@
 }
 
 /* Structured headline */
-.hero-title {
+.entry-hero .hero-title {
     font-size: 48px;
     letter-spacing: -0.02em;
     margin: 0 0 var(--space-3) 0;
@@ -64,7 +64,7 @@
 }
 
 /* Institutional subtitle */
-.hero-subtitle {
+.entry-hero .hero-subtitle {
     margin: 0 auto var(--space-8);
     color: var(--text-secondary);
     font-size: 16px;
@@ -75,7 +75,7 @@
 }
 
 /* Minimal divider */
-.divider {
+.entry-hero .divider {
     width: 40px;
     height: 2px;
     background: var(--accent);
@@ -83,30 +83,42 @@
 }
 
 /* Action cards - rectangular, grounded */
-.action-grid {
+.entry-hero .action-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-4);
     margin-top: var(--space-8);
     max-width: 1000px;
-    /* Restore width constraint here */
     width: 100%;
 }
 
-.action-card {
+/* Fix for card sizing: ensure links fill the grid cell */
+.entry-hero .action-grid>a {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.entry-hero .action-card {
     background: var(--bg-panel);
     border: var(--border);
     padding: var(--space-6);
     transition: border-color 0.2s ease;
     cursor: pointer;
     border-radius: var(--radius-sm);
+
+    /* Ensure card fills the link height and contents align */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
-.action-card:hover {
+.entry-hero .action-card:hover {
     border-color: var(--text-primary);
 }
 
-.action-card h3 {
+.entry-hero .action-card h3 {
     margin: var(--space-4) 0 var(--space-2) 0;
     font-size: 16px;
     font-family: 'IBM Plex Serif', serif;
@@ -114,15 +126,17 @@
     color: var(--text-primary);
 }
 
-.action-card p {
+.entry-hero .action-card p {
     margin: 0;
     color: var(--text-secondary);
     font-size: 14px;
     line-height: 1.5;
+    flex: 1;
+    /* Pushes content to fill space if needed, or just standard flow */
 }
 
 /* Icon - minimal, functional */
-.action-icon {
+.entry-hero .action-icon {
     width: 48px;
     height: 48px;
     border: var(--border);
@@ -134,15 +148,20 @@
     border-radius: var(--radius-sm);
 }
 
+.entry-hero .admin-access-footer a:hover {
+    color: var(--text-primary) !important;
+    border-bottom-color: var(--text-primary) !important;
+}
+
 /* Responsive */
 @media (max-width: 968px) {
-    .action-grid {
+    .entry-hero .action-grid {
         grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 768px) {
-    .hero-title {
+    .entry-hero .hero-title {
         font-size: 36px;
     }
 

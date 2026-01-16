@@ -148,7 +148,6 @@ function ReportStore() {
                     {/* Store Selector */}
                     <div className="form-section">
                         <label className="form-label">
-                            <span className="label-icon">🏪</span>
                             <span className="label-text">Select Store to Report</span>
                         </label>
                         {loading ? (

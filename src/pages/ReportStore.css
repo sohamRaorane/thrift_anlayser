@@ -5,7 +5,7 @@
     margin: 0 auto;
 }
 
-.report-header {
+.report-store .report-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -14,13 +14,13 @@
     border-bottom: var(--border);
 }
 
-.report-header h1 {
+.report-store .report-header h1 {
     margin: 0;
     font-size: 24px;
     font-family: 'IBM Plex Serif', serif;
 }
 
-.breadcrumb {
+.report-store .breadcrumb {
     display: inline-flex;
     align-items: center;
     gap: var(--space-2);
@@ -31,77 +31,77 @@
     font-size: 14px;
 }
 
-.breadcrumb:hover {
+.report-store .breadcrumb:hover {
     color: var(--text-primary);
 }
 
-.report-shell {
+.report-store .report-shell {
     background: var(--bg-panel);
     border: var(--border);
     padding: var(--space-8);
     border-radius: var(--radius-sm);
 }
 
-.report-form {
+.report-store .report-form {
     display: flex;
     flex-direction: column;
     gap: var(--space-6);
 }
 
-.form-section {
+.report-store .form-section {
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
 }
 
-.form-label {
+.report-store .form-label {
     display: flex;
     align-items: center;
     gap: var(--space-2);
     font-weight: 600;
-    color: var(--text-primary);
+    color: black;
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
 
-.label-icon {
+.report-store .label-icon {
     font-size: 16px;
 }
 
-.label-text {
+.report-store .label-text {
     font-family: 'IBM Plex Sans', serif;
 }
 
-.form-input {
+.report-store .form-input {
     width: 100%;
     padding: var(--space-4);
-    border: var(--border);
+    border: 1px solid var(--text-primary);
     background: var(--bg-panel);
     font-size: 14px;
     font-family: 'IBM Plex Sans', sans-serif;
-    color: var(--text-primary);
+    color: black;
     transition: border-color 0.2s ease;
     border-radius: var(--radius-sm);
 }
 
-.form-input:focus {
+.report-store .form-input:focus {
     outline: none;
     border-color: var(--accent);
 }
 
-.form-input::placeholder {
+.report-store .form-input::placeholder {
     color: var(--text-muted);
 }
 
-.form-textarea {
+.report-store .form-textarea {
     width: 100%;
     padding: var(--space-4);
-    border: var(--border);
+    border: 1px solid var(--text-primary);
     background: var(--bg-panel);
     font-size: 14px;
     font-family: 'IBM Plex Sans', sans-serif;
-    color: var(--text-primary);
+    color: black;
     resize: vertical;
     min-height: 140px;
     transition: border-color 0.2s ease;
@@ -109,17 +109,17 @@
     border-radius: var(--radius-sm);
 }
 
-.form-textarea:focus {
+.report-store .form-textarea:focus {
     outline: none;
     border-color: var(--accent);
 }
 
-.form-textarea::placeholder {
+.report-store .form-textarea::placeholder {
     color: var(--text-muted);
 }
 
 /* Upload Area */
-.upload-area {
+.report-store .upload-area {
     border: 2px dashed var(--border-color);
     background: var(--bg-secondary);
     padding: var(--space-6);
@@ -131,22 +131,22 @@
     border-radius: var(--radius-sm);
 }
 
-.upload-area:hover {
+.report-store .upload-area:hover {
     border-color: var(--text-primary);
     background: var(--bg-panel);
 }
 
-.file-input {
+.report-store .file-input {
     display: none;
 }
 
-.upload-content {
+.report-store .upload-content {
     display: flex;
     align-items: center;
     gap: var(--space-4);
 }
 
-.upload-icon {
+.report-store .upload-icon {
     width: 56px;
     height: 56px;
     border: var(--border);
@@ -159,26 +159,26 @@
     border-radius: var(--radius-sm);
 }
 
-.upload-text {
+.report-store .upload-text {
     flex: 1;
     text-align: left;
 }
 
-.upload-title {
+.report-store .upload-title {
     font-weight: 600;
     font-size: 14px;
-    color: var(--text-primary);
+    color: black;
     margin-bottom: var(--space-1);
 }
 
-.upload-subtitle {
+.report-store .upload-subtitle {
     color: var(--text-secondary);
     font-size: 13px;
     line-height: 1.5;
     margin: 0;
 }
 
-.file-list {
+.report-store .file-list {
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
@@ -186,7 +186,7 @@
     border-top: var(--border);
 }
 
-.file-item {
+.report-store .file-item {
     padding: var(--space-3) var(--space-4);
     background: var(--bg-panel);
     border: var(--border);
@@ -197,14 +197,14 @@
 }
 
 /* Form Actions */
-.form-actions {
+.report-store .form-actions {
     display: flex;
     justify-content: flex-end;
     padding-top: var(--space-6);
     margin-top: var(--space-2);
 }
 
-.submit-btn {
+.report-store .submit-btn {
     background: white;
     color: black;
     border: 1px solid black;
@@ -219,42 +219,42 @@
     box-shadow: 0 0 0 0 black;
 }
 
-.submit-btn:hover {
+.report-store .submit-btn:hover {
     transform: translateY(-4px) translateX(-2px);
     box-shadow: 2px 5px 0 0 black;
 }
 
-.submit-btn:active {
+.report-store .submit-btn:active {
     transform: translateY(2px) translateX(1px);
     box-shadow: 0 0 0 0 black;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    .report-shell {
+    .report-store .report-shell {
         padding: var(--space-6) var(--space-5);
     }
 
-    .report-header {
+    .report-store .report-header {
         flex-direction: column;
         align-items: flex-start;
         gap: var(--space-3);
     }
 
-    .upload-content {
+    .report-store .upload-content {
         flex-direction: column;
         text-align: center;
     }
 
-    .upload-text {
+    .report-store .upload-text {
         text-align: center;
     }
 
-    .form-actions {
+    .report-store .form-actions {
         justify-content: stretch;
     }
 
-    .submit-btn {
+    .report-store .submit-btn {
         width: 100%;
     }
 }
