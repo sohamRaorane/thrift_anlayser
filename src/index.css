@@ -271,3 +271,176 @@ td {
   color: var(--text-tertiary);
   margin-left: 6px;
 }
+
+/* Form Elements - Global Styles */
+.form-section {
+  margin-bottom: var(--space-6);
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.label-text {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  letter-spacing: 0.05em;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--text-primary);
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--text-primary);
+  background: var(--bg-primary);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Combobox specific */
+.combobox-wrapper {
+  position: relative;
+}
+
+.combobox-options {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  max-height: 240px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  z-index: 50;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.combobox-option {
+  padding: 12px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--bg-secondary);
+  transition: background 0.1s ease;
+}
+
+.combobox-option:last-child {
+  border-bottom: none;
+}
+
+.combobox-option:hover {
+  background: var(--bg-secondary);
+}
+
+.combobox-option-title {
+  font-weight: 500;
+  color: var(--text-primary);
+  font-size: 14px;
+}
+
+.combobox-option-subtitle {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  margin-top: 2px;
+}
+
+/* File Upload Area */
+.upload-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg-primary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.upload-area:hover {
+  background: var(--bg-secondary);
+  border-color: var(--text-primary);
+}
+
+.file-input {
+  display: none;
+}
+
+.upload-content {
+  text-align: center;
+}
+
+.upload-icon {
+  margin-bottom: var(--space-3);
+  color: var(--text-secondary);
+}
+
+.upload-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.upload-subtitle {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  max-width: 280px;
+}
+
+.file-list {
+  margin-top: var(--space-4);
+  width: 100%;
+}
+
+.file-item {
+  font-size: 13px;
+  padding: 6px 10px;
+  background: white;
+  border: 1px solid var(--border-color);
+  margin-bottom: 4px;
+  border-radius: var(--radius-sm);
+}
+
+/* Submit Button Area */
+.form-actions {
+  margin-top: var(--space-8);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.submit-btn {
+  padding: 14px 32px;
+  font-size: 15px;
+  font-weight: 600;
+  background: var(--text-primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.submit-btn:hover {
+  background: black;
+  transform: translateY(-1px);
+}

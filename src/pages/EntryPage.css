@@ -1,9 +1,39 @@
 /* EntryPage - Editorial Institutional */
 
 .entry-hero {
-    max-width: 900px;
-    margin: 0 auto;
+    width: 100%;
+    min-height: 100vh;
     padding: var(--space-12) var(--space-6);
+
+    /* Background Image Setup */
+    background-image: url('/entry-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* Optional: Parallax effect */
+
+    /* Flex centering for the whole page */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* Ensure text is readable on any bg (optional: default to dark text, user can invert if needed) */
+    position: relative;
+    z-index: 1;
+}
+
+/* Optional overlay to improve text contrast if image is busy */
+.entry-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.5);
+    /* Slight white tint overlay */
+    z-index: -1;
 }
 
 /* Official verification mark */
@@ -58,6 +88,9 @@
     grid-template-columns: repeat(3, 1fr);
     gap: var(--space-4);
     margin-top: var(--space-8);
+    max-width: 1000px;
+    /* Restore width constraint here */
+    width: 100%;
 }
 
 .action-card {

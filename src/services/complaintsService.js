@@ -10,7 +10,7 @@ export const complaintsService = {
             .from('complaint_tickets')
             .select(`
                 *,
-                vendors (business_name, store_name)
+                vendors:seller_id (business_name, store_name)
             `)
             .order('created_at', { ascending: false });
 
@@ -31,6 +31,17 @@ export const complaintsService = {
             notes: t.admin_notes || '',
             evidence: [] // Fetched separately or can join if needed
         }));
+    },
+
+    // 1.5 Create Ticket
+    createTicket: async (ticketPayload) => {
+        const { data, error } = await supabase
+            .from('complaint_tickets')
+            .insert([ticketPayload])
+            .select();
+
+        if (error) throw error;
+        return data;
     },
 
     // 2. Fetch Evidence for a Ticket

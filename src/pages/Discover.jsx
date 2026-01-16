@@ -102,6 +102,17 @@ function Discover() {
     [vendors],
   )
 
+  const sponsored = useMemo(
+    () => vendors.filter(v => v.subscription_plan === 'featured'),
+    [vendors]
+  )
+
+  // Remove sponsored from main list to avoid duplication if desired, or keep them. 
+  // Let's keep them in the main list too (as per typical ads) or separate.
+  // User asked for "Sponsored Slots", implying a special area. 
+  // Let's render sponsored AT THE TOP of the list, or in a separate block.
+  // I will assume specific slots means a "Featured" section atop the results.
+
   return (
     <section className="page discover-shell">
       <div className="app-bar">
@@ -201,6 +212,42 @@ function Discover() {
           </div>
 
           <div className="vendor-stack">
+            {/* Sponsored Section */}
+            {sponsored.length > 0 && !search && selectedCategory === 'All' && (
+              <div className="sponsored-section" style={{ marginBottom: '24px', padding: '16px', background: '#fffbeb', borderRadius: '8px', border: '1px solid #fcd34d' }}>
+                <h3 style={{ fontSize: '0.9rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#b45309', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  ⚡ Sponsored Featured Shops
+                </h3>
+                {sponsored.map(vendor => (
+                  <Link key={`sponsored-${vendor.id}`} to={`/vendor/${vendor.id}`} style={{ textDecoration: 'none', color: 'inherit', display: 'block', marginBottom: '12px' }}>
+                    <article className="vendor-card large" style={{ border: '1px solid #fcd34d', boxShadow: '0 4px 6px -1px rgba(245, 158, 11, 0.1)' }}>
+                      <div className="vendor-thumb large" aria-hidden>
+                        {vendor.image ? (
+                          <img src={vendor.image} alt={vendor.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                        ) : '📷'}
+                      </div>
+                      <div className="vendor-body">
+                        <div className="vendor-head">
+                          <div className="vendor-name">
+                            {vendor.name}
+                            <span className="badge" style={{ background: '#fcd34d', color: '#78350f' }}>Sponsored</span>
+                          </div>
+                          <StarRating rating={vendor.score} />
+                        </div>
+                        <div className="vendor-meta">
+                          <span className="vendor-category">{vendor.category}</span>
+                          <span className="meta-separator">•</span>
+                          <span className="vendor-location">{vendor.location}</span>
+                        </div>
+                        {/* No description for compact sponsored view? Or keep standard. Keeping standard. */}
+                        <p className="vendor-description">{vendor.description}</p>
+                      </div>
+                    </article>
+                  </Link>
+                ))}
+              </div>
+            )}
+
             {filtered.map((vendor) => (
               <Link key={vendor.username} to={`/vendor/${vendor.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                 <article className="vendor-card large">

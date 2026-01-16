@@ -39,6 +39,7 @@ export const subscriptionService = {
 
     // 3. Upsert Subscription (Create or Update)
     updateSubscription: async (sellerId, planId, promoData, metaData) => {
+        // 1. Update/Create Subscription Record
         const { data, error } = await supabase
             .from('seller_subscriptions')
             .upsert({
@@ -56,6 +57,23 @@ export const subscriptionService = {
             .single();
 
         if (error) throw error;
+
+        // 2. SYNC: Update 'vendors' table for Discover page visibility
+        // Fetch plan details to see if it's a paid/featured plan
+        const { data: plan } = await supabase
+            .from('plans')
+            .select('price_monthly, name')
+            .eq('id', planId)
+            .single();
+
+        // simple logic: paid plans = featured
+        const newStatus = (plan && plan.price_monthly > 0) ? 'featured' : 'standard';
+
+        await supabase
+            .from('vendors')
+            .update({ subscription_plan: newStatus })
+            .eq('id', sellerId);
+
         return data;
     },
 
