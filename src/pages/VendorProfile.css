@@ -6,7 +6,7 @@
 }
 
 /* Vendor Hero Section */
-.vendor-hero {
+.vendor-profile .vendor-hero {
     display: grid;
     grid-template-columns: 1fr 380px;
     gap: 2.5rem;
@@ -15,13 +15,13 @@
     border-bottom: var(var(--border-thick));
 }
 
-.vendor-identity {
+.vendor-profile .vendor-identity {
     display: grid;
     grid-template-columns: 200px 1fr;
     gap: 2rem;
 }
 
-.vendor-hero-image {
+.vendor-profile .vendor-hero-image {
     width: 200px;
     height: 200px;
     background: var(--parchment-dark);
@@ -30,27 +30,27 @@
     background-position: center;
 }
 
-.vendor-identity-body {
+.vendor-profile .vendor-identity-body {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
 }
 
-.vendor-title-row {
+.vendor-profile .vendor-title-row {
     display: flex;
     align-items: center;
     gap: 1rem;
     margin-bottom: 0.5rem;
 }
 
-.vendor-title-row h1 {
+.vendor-profile .vendor-title-row h1 {
     font-size: 2.25rem;
     font-weight: 700;
     margin: 0;
     letter-spacing: 0.02em;
 }
 
-.badge-verified {
+.vendor-profile .badge-verified {
     background: var(--accent-subtle);
     color: var(--accent-gold);
     padding: 0.35rem 1rem;
@@ -61,25 +61,25 @@
     text-transform: uppercase;
 }
 
-.vendor-instagram {
+.vendor-profile .vendor-instagram {
     color: var(--ink-muted);
     font-size: 1rem;
     text-decoration: none;
     font-weight: 500;
 }
 
-.vendor-instagram:hover {
+.vendor-profile .vendor-instagram:hover {
     color: var(--ink-black);
 }
 
-.vendor-description {
+.vendor-profile .vendor-description {
     color: var(--ink-muted);
     line-height: 1.7;
     margin-top: 0.5rem;
     font-size: 1rem;
 }
 
-.vendor-metrics {
+.vendor-profile .vendor-metrics {
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -88,7 +88,7 @@
     border-top: var(--border-subtle);
 }
 
-.score-badge {
+.vendor-profile .score-badge {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -99,18 +99,18 @@
     color: var(--ink-black);
 }
 
-.score-value {
+.vendor-profile .score-value {
     font-size: 1.25rem;
     font-weight: 700;
     color: var(--accent-gold);
 }
 
-.muted {
+.vendor-profile .muted {
     color: var(--ink-muted);
     font-size: 0.95rem;
 }
 
-.primary-btn {
+.vendor-profile .primary-btn {
     background: var(--ink-black);
     color: var(--parchment);
     border: none;
@@ -124,14 +124,14 @@
     letter-spacing: 0.05em;
 }
 
-.primary-btn:hover {
+.vendor-profile .primary-btn:hover {
     background: var(--ink-brown);
     transform: translateY(-2px);
     box-shadow: var(--shadow-medium);
 }
 
 /* DripScore Card - Modern numerical design */
-.drip-card {
+.vendor-profile .drip-card {
     background: var(--parchment-light);
     border: var(var(--border-thick));
     padding: 2rem;
@@ -140,7 +140,7 @@
     gap: 1.5rem;
 }
 
-.drip-card-header {
+.vendor-profile .drip-card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -148,7 +148,7 @@
     border-bottom: var(--border-subtle);
 }
 
-.drip-label {
+.vendor-profile .drip-label {
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: 0.1em;
@@ -156,7 +156,7 @@
     color: var(--ink-muted);
 }
 
-.drip-value {
+.vendor-profile .drip-value {
     font-size: 3rem;
     font-weight: 700;
     color: var(--ink-black);
@@ -164,19 +164,19 @@
     line-height: 1;
 }
 
-.drip-meter {
+.vendor-profile .drip-meter {
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
 }
 
-.drip-meter-row {
+.vendor-profile .drip-meter-row {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
 
-.drip-meter-label {
+.vendor-profile .drip-meter-label {
     font-size: 0.9rem;
     color: var(--ink-black);
     font-weight: 500;
@@ -185,7 +185,7 @@
     align-items: center;
 }
 
-.drip-meter-bar {
+.vendor-profile .drip-meter-bar {
     height: 8px;
     background: var(--parchment-dark);
     border: var(--border-subtle);
@@ -193,34 +193,34 @@
     overflow: hidden;
 }
 
-.drip-meter-bar span {
+.vendor-profile .drip-meter-bar span {
     display: block;
     height: 100%;
     background: var(--ink-black);
     transition: width 0.6s ease;
 }
 
-.drip-meter-value {
+.vendor-profile .drip-meter-value {
     font-weight: 700;
     font-size: 0.85rem;
     color: var(--ink-black);
 }
 
 /* Vendor Sections */
-.vendor-sections {
+.vendor-profile .vendor-sections {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
     margin-bottom: 3rem;
 }
 
-.vendor-panel {
+.vendor-profile .vendor-panel {
     background: var(--parchment-light);
     border: var(var(--border-thick));
     padding: 2rem;
 }
 
-.panel-head {
+.vendor-profile .panel-head {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -229,14 +229,14 @@
     border-bottom: var(--border-subtle);
 }
 
-.panel-head h3 {
+.vendor-profile .panel-head h3 {
     font-size: 1.25rem;
     font-weight: 700;
     margin: 0;
     font-family: 'Playfair Display', serif;
 }
 
-.pill {
+.vendor-profile .pill {
     padding: 0.35rem 1rem;
     font-size: 0.75rem;
     font-weight: 700;
@@ -245,29 +245,29 @@
     text-transform: uppercase;
 }
 
-.pill.success {
+.vendor-profile .pill.success {
     background: var(--accent-subtle);
     color: var(--accent-gold);
     border-color: var(--accent-gold);
 }
 
-.pill.neutral {
+.vendor-profile .pill.neutral {
     background: var(--parchment-dark);
     color: var(--ink-muted);
 }
 
-.panel-text {
+.vendor-profile .panel-text {
     color: var(--ink-black);
     line-height: 1.7;
     margin-bottom: 0.75rem;
 }
 
-.panel-subtext {
+.vendor-profile .panel-subtext {
     color: var(--ink-muted);
     font-size: 0.9rem;
 }
 
-.panel-note {
+.vendor-profile .panel-note {
     background: var(--parchment-dark);
     padding: 1rem;
     margin-top: 1.5rem;
@@ -278,55 +278,55 @@
 }
 
 /* Transparency Grid */
-.transparency-grid {
+.vendor-profile .transparency-grid {
     display: grid;
     gap: 1.25rem;
 }
 
-.transparency-grid>div {
+.vendor-profile .transparency-grid>div {
     display: grid;
     grid-template-columns: 140px 1fr;
     gap: 1rem;
 }
 
-.transparency-grid dt {
+.vendor-profile .transparency-grid dt {
     font-weight: 600;
     color: var(--ink-black);
     font-size: 0.9rem;
 }
 
-.transparency-grid dd {
+.vendor-profile .transparency-grid dd {
     color: var(--ink-muted);
     margin: 0;
     font-size: 0.9rem;
 }
 
 /* Review Panel */
-.review-panel {
+.vendor-profile .review-panel {
     grid-column: 1 / -1;
     margin-top: 1rem;
 }
 
-.review-list {
+.vendor-profile .review-list {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 }
 
-.review-card {
+.vendor-profile .review-card {
     background: var(--parchment);
     border: var(--border-subtle);
     padding: 1.75rem;
     transition: all 0.3s ease;
 }
 
-.review-card:hover {
+.vendor-profile .review-card:hover {
     border-color: var(--ink-black);
     box-shadow: var(--shadow-soft);
 }
 
 /* Submit Review Button */
-.submit-review-btn {
+.vendor-profile .submit-review-btn {
     background: white;
     color: black;
     border: 1px solid black;
@@ -341,31 +341,31 @@
     box-shadow: 0 0 0 0 black;
 }
 
-.submit-review-btn:hover {
+.vendor-profile .submit-review-btn:hover {
     transform: translateY(-4px) translateX(-2px);
     box-shadow: 2px 5px 0 0 black;
 }
 
-.submit-review-btn:active {
+.vendor-profile .submit-review-btn:active {
     transform: translateY(2px) translateX(1px);
     box-shadow: 0 0 0 0 black;
 }
 
-.review-top {
+.vendor-profile .review-top {
     display: flex;
     justify-content: space-between;
     gap: 1.5rem;
     margin-bottom: 1rem;
 }
 
-.review-card h4 {
+.vendor-profile .review-card h4 {
     font-size: 1.1rem;
     font-weight: 700;
     margin: 0 0 0.5rem 0;
     font-family: 'Playfair Display', serif;
 }
 
-.review-meta {
+.vendor-profile .review-meta {
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -373,24 +373,24 @@
     font-size: 0.9rem;
 }
 
-.review-score {
+.vendor-profile .review-score {
     font-weight: 700;
     color: var(--ink-black);
     font-size: 1.1rem;
 }
 
-.tag-row {
+.vendor-profile .tag-row {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
 }
 
-.pill.small {
+.vendor-profile .pill.small {
     padding: 0.25rem 0.75rem;
     font-size: 0.7rem;
 }
 
-.review-body {
+.vendor-profile .review-body {
     color: var(--ink-muted);
     line-height: 1.7;
     margin: 0;
